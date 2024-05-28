@@ -1,0 +1,56 @@
+body {
+    background: url('https://reactormag.com/wp-content/uploads/2024/02/rev-1-DUN2-T3-0044r_High_Res_JPEG.jpeg') no-repeat center center fixed; 
+    background-size: cover;
+    color: #fff;
+  }
+  .card {
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-top: 20px;
+  }
+  .card-header {
+    background-color: rgba(0, 123, 255, 0.8);
+    color: white;
+  }
+  .data-display {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  h1 {
+    color: rgb(50, 50, 224);
+  }
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    font-style: italic;
+    color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+    .data-display {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+    .data-display {
+      font-size: 1rem;
+    }
+    .interna {
+      margin-right: 0;
+      margin-top: 20px;
+    }
+  }
+  
+  .interna {
+    margin-top: 20px;
+  }
