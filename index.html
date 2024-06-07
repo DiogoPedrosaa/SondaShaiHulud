@@ -8,14 +8,31 @@
 <body>
   <div class="container">
     <h1 class="text-center my-4">Dados do Equipamento</h1>
-    <div class="card mx-auto" style="max-width: 500px;">
-      <div class="card-header text-center">
-        Sonda Shai'Hulud
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mx-auto" style="max-width: 500px;">
+          <div class="card-header text-center">
+            Sonda Shai'Hulud
+          </div>
+          <div class="card-body">
+            <div class="data-display text-center" id="temperature">Temperatura: --</div>
+            <div class="data-display text-center" id="humidity">Umidade: --</div>
+            <div class="interna data-display text-center" id="air-conditioning-temp">Temperatura do Ar-Condicionado: -- °C</div>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <div class="data-display text-center" id="temperature">Temperatura: --</div>
-        <div class="data-display text-center" id="humidity">Umidade: --</div>
-        <div class="interna data-display text-center" id="air-conditioning-temp">Temperatura do Ar-Condicionado: -- °C</div>
+      <div class="col-md-6">
+        <div class="card mx-auto" style="max-width: 500px;">
+          <div class="card-header text-center">
+            Previsão do Tempo
+          </div>
+          <div class="card-body">
+            <div class="data-display text-center" id="weather">Carregando previsão...</div>
+            <div class="data-display text-center" id="temperature-forecast">Temperatura: --</div>
+            <div class="data-display text-center" id="humidity-forecast">Umidade: --</div>
+            <div class="data-display text-center" id="conditions-forecast">Condições: --</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -24,10 +41,30 @@
     Lisan al Gaib
   </footer>
 
-
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script type="module" src="index.js"></script>
+  <script>
+    // Função para obter a previsão do tempo
+    async function getWeatherForecast() {
+      const apiKey = '2fbff278f9558585261ee2c1ff11bf43'; // Substitua pela sua chave de API do OpenWeatherMap
+      const city = 'Maceió'; // Substitua pelo nome da sua cidade
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        document.getElementById('weather').innerText = `Previsão do Tempo para ${data.name}`;
+        document.getElementById('temperature-forecast').innerText = `Temperatura: ${data.main.temp} °C`;
+        document.getElementById('humidity-forecast').innerText = `Umidade: ${data.main.humidity}%`;
+        document.getElementById('conditions-forecast').innerText = `Condições: ${data.weather[0].description}`;
+      } catch (error) {
+        console.error('Erro ao obter a previsão do tempo:', error);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', getWeatherForecast);
+  </script>
 </body>
 </html>
